@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*---------- Text ----------*/
+
+h1 {
+    font-size: 1.2em;
+    font-weight: normal;
+}
+h1.score {
+    text-align: right;
+}
+p {
+    font-size: 0.9em;
+}
+span.point {
+    color: orangered;
+}
+
+/*---------- Containers ----------*/
+
+.wrapper {
+    width: 60%;
+    margin: auto;
+    margin-top: 5%;
+}
+.reg {
+    width: 100%;
+    float: right;
+}
+.regPlayer {
+    width: 170px;
+    float: right;
+}
+.half {
+    width: 50%;
+    float: left;
+}
+
+/*---------- Buttons ----------*/
+
+.option {
+    border: 1px solid black;
+    float: left;
+    padding: 5px;
+    margin: 0 10px 0 0;
+    background-color: white;
+    transition-duration: 0.5s;
+}
+.answer {
+    border: 1px solid black;
+    float: right;
+    padding: 5px;
+    margin: 0 0 0 10px;
+    background-color: white;
+    transition-duration: 0.3s;
+}
+.play {
+    border: 1px solid black;
+    float: right;
+    padding: 5px;
+    margin: 0 0 0 10px;
+    background-color: white;
+    transition-duration: 0.3s;
+    width: 100%;
+}
+button:hover {
+    background-color: orangered;
+    color: white;
+}
+button.pressed {
+    border: 1px solid black;
+    background-color: orangered;
+    color: white;
+}
+
+/*---------- Elements ----------*/
+
+.lists {
+    margin: 13px 0;
+    float: right;
+    width: 80px;
+    text-align: center;
+}
+.input{
+    border: 1px solid black;
+    padding: 5px 0 5px 2px;
+    width: 166px;
+    float: right;
+}

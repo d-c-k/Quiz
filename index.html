@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style src="style.css"></style>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
@@ -9,23 +9,24 @@
 <body>
 
     <div class="wrapper">
+        <div class="reg">
+            <h1 class="score" id="currenPlayer">Spelare</h1>
+            <h1 class="score"><span class="point" id="currentScore">7</span>p</h1>
+        </div>
+    </div>
+
+    <div class="wrapper">
         <div id="questionObj">
-            <h1 id="questionCounter">Fråga 1</h1>
+            <h1 id="questionCounter">Fråga 1:</h1>
             <h1 id="question">Frågan står här?</h1>
         </div>
         <div id="optionsObj">
-            <div class="option">
-                <p>Alternativ 1</p>
-            </div>
-            <div class="option">
-                <p>Alternativ 2</p>
-            </div>
-            <div class="option">
-                <p>Alternativ 3</p>
-            </div>
-            <div class="option">
-                <p>Alternativ 4</p>
-            </div>
+            <button type="button" class="option">Alternativ 1</button>
+            <button type="button" class="option">Alternativ 2</button>
+            <button type="button" class="option">Alternativ 3</button>
+            <button type="button" class="option">Alternativ 4</button>
+
+            <button type="button" class="answer">Svara</button>
         </div>
     </div>
     
