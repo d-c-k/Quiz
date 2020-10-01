@@ -8,28 +8,54 @@
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="reg">
-            <h1 class="score" id="currentPlayer">Spelare</h1>
-            <h1 class="score"><span class="point" id="currentScore">7</span>p</h1>
+    <div id="regAll">
+        <div class="wrapper">
+            <div class="regPlayer">
+                <h1 class="score">Registrera spelare</h1>
+                <input class="input" type="text" id="nameInput" placeholder="Namn">
+                <div class="half">
+                    <p>Antal frågor:</p>
+                </div>
+                <div class="half">    
+                    <select class="lists" id="list">
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <button type="button" class="play" id="btnPlay">Spela</button>
+            </div>
         </div>
     </div>
 
-    <div class="wrapper">
-        <div id="questionObj">
-            <h1 id="questionCounter">Fråga 1:</h1>
-            <h1 id="question">Frågan står här?</h1>
+    <div id="questionsAll">
+        <div class="wrapper">
+            <div class="reg">
+                <h1 class="score" id="currentPlayer">Spelare</h1>
+                <h1 class="score"><span class="point" id="currentScore">7</span>p</h1>
+            </div>
         </div>
-        <div id="optionsObj">
-            <button type="button" class="option">Alternativ 1</button>
-            <button type="button" class="option">Alternativ 2</button>
-            <button type="button" class="option">Alternativ 3</button>
-            <button type="button" class="option">Alternativ 4</button>
 
-            <button type="button" class="answer">Svara</button>
+        <div class="wrapper">
+            <div id="questionObj">
+                <h1 id="questionCounter">Fråga 1:</h1>
+                <h1 id="question">Frågan står här?</h1>
+            </div>
+            <div id="optionsObj">
+                <button type="button" class="option">Alternativ 1</button>
+                <button type="button" class="option">Alternativ 2</button>
+                <button type="button" class="option">Alternativ 3</button>
+                <button type="button" class="option">Alternativ 4</button>
+
+                <button type="button" class="answer">Svara</button>
+            </div>
         </div>
     </div>
     
+    <!--script src="js/Page.js"></script-->
     <script src="js/Player.js"></script>
     <script src="js/Questions.js"></script>
     <script src="js/Main.js"></script>
