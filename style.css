@@ -46,21 +46,20 @@ span.point {
 
 /*---------- Buttons ----------*/
 
-.option {
+/* .option {
     border: 1px solid black;
     float: left;
     padding: 5px;
     margin: 0 10px 0 0;
     background-color: white;
     transition-duration: 0.5s;
-}
+} */
 .answer {
     border: 1px solid black;
     float: right;
     padding: 5px;
     margin: 0 0 0 10px;
     background-color: white;
-    transition-duration: 0.3s;
 }
 .play {
     border: 1px solid black;
@@ -68,29 +67,34 @@ span.point {
     padding: 5px;
     margin: 0 0 0 10px;
     background-color: white;
-    transition-duration: 0.3s;
     width: 100%;
-}
-button:hover {
-    background-color: orangered;
-    color: white;
 }
 button.pressed {
     border: 1px solid black;
     background-color: orangered;
     color: white;
 }
+.labelCheck {
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
 input[type="checkbox"] + label {
     border: 1px solid black;
     float: left;
     padding: 5px;
-    margin: 0 10px 0 0;
+    margin: 10px 10px 10px 0;
     background-color: white;
+    width: 60%;
 }
 input[type="checkbox"]:checked + label {
     border: 1px solid black;
+    float: left;
+    padding: 5px;
+    margin: 10px 10px 10px 0;
     background-color: orangered;
     color: white;
+    width: 60%;
 }
 input[type="checkbox"]:not(:checked), 
 input[type="checkbox"]:checked {
