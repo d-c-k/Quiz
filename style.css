@@ -14,9 +14,6 @@ h1.score {
 p {
     font-size: 0.9em;
 }
-span.point {
-    color: orangered;
-}
 
 /*---------- Containers ----------*/
 
@@ -49,14 +46,6 @@ span.point {
 
 /*---------- Buttons ----------*/
 
-/* .option {
-    border: 1px solid black;
-    float: left;
-    padding: 5px;
-    margin: 0 10px 0 0;
-    background-color: white;
-    transition-duration: 0.5s;
-} */
 .answer {
     border: 1px solid black;
     float: left;

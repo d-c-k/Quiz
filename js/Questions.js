@@ -3,9 +3,8 @@ class Questions {
         this.id = id;
         this.questionObj = [];
         this.answersObj = [];
-        this.answerCheck = [];
-        this.answerLabel = [];
         this.correctAnswersObj = [];
+        this.chosenAnswers = [];
     }
 
     setId() {
@@ -37,10 +36,6 @@ class Questions {
             console.log(this.questionObj);
             console.log(this.answersObj);
             console.log(this.correctAnswersObj);
-            for (let i = 1; i <= this.answersObj.length; i++) {
-                this.answerLabel.push(document.getElementById("l" + i));
-                this.answerCheck.push(document.getElementById("c" + i));
-            }
         });
         
         
@@ -55,6 +50,7 @@ class Questions {
 
         for (let i = 1; i <= this.answersObj[this.id - 1].length; i++) {
             document.getElementById("d" + i).style.display = "block";
+            document.getElementById("c" + i).checked = false;
         }
 
         let questionId = document.getElementById("questionCounter");
@@ -65,13 +61,33 @@ class Questions {
             
         for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
             if (this.answersObj[this.id - 1][i] != undefined) {
-                this.answerLabel[i].innerHTML = this.answersObj[this.id - 1][i].replace(/\</g,"&lt;");
+                document.getElementById("l" + (i + 1)).innerHTML = this.answersObj[this.id - 1][i].replace(/\</g,"&lt;");
             } else {
                 document.getElementById("d" + (i + 1)).style.display = "none";
             }
-        }  
+        }
     }
 
     correct() {
+        let chosenAnswer = {
+            id: 0,
+            question: "",
+            answerArr: [],
+            correct: false,
+        }
+
+        chosenAnswer.id = this.id;
+        chosenAnswer.question = this.questionObj[this.id - 1];
+        for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
+            if (document.getElementById("c" + (i + 1)).checked == true) {
+                chosenAnswer.answerArr.push(this.answersObj[this.id - 1][i]);
+            }
+            //if (this.correctAnswersObj[i] = true)
+        }
+        
+        
+        this.chosenAnswers.push(chosenAnswer);
+
+        console.log(this.chosenAnswers);
     }
 }
