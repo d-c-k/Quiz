@@ -11,16 +11,22 @@ window.addEventListener("DOMContentLoaded", function(e) {
         console.log(player);
     })
     btnPlay.addEventListener("mouseup", function(e) {
+        questions.setId();
         questions.newQuestion();
         document.getElementById("regAll").style.display = "none"; 
         document.getElementById("questionsAll").style.display = "block";
     })
 
-    let answers = document.getElementById("answers");
+    // let answers = document.getElementById("btnAnswers");
     
-    answers.addEventListener("click", function(e) {
+    // answers.addEventListener("click", function(e) {
+    //     questions.newQuestion();
+    //     console.log(data)
+    //     console.log(Questions)
+    // })
+
+    document.getElementById("btnNext").addEventListener("click", function (e) {
+        questions.setId();
         questions.newQuestion();
-        console.log(data)
-        console.log(Questions)
     })
 })
