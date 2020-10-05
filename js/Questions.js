@@ -109,6 +109,16 @@ class Questions {
             }
         }
 
+        let a = this.chosenAnswers[this.id - 1];
+
+        if (a.answerIndex.length = 1) {
+            document.getElementById("c" + (Number(a.answerIndex) + 1)).checked = true;
+        }
+        if (a.answerIndex.length > 1) {
+            for (let i = 0; i <= a.answerIndex.length; i++) {
+                document.getElementById("c" + (Number(a.answerIndex[i]) + 1)).checked = true;
+            }
+        }
         // console.log(this.chosenAnswers[this.id - 1][1].length);
         //for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
             // if (this.chosenAnswers[this.id - 1].chosenAnswer.answerIndex.length == 1) {
@@ -145,12 +155,23 @@ class Questions {
             correctAnswersStr: [],
         }
 
+        let currentAnswer = this.answersObj[this.id - 1];
         let currentCorrect = this.correctAnswersObj[this.id - 1];
-        console.log(currentCorrect);
+
+        let checkedBoxes = [];
+        //checkedBoxes.getElementById
+        // let boxes = document.getElementsByClassName("answerCheck");
+        // for (let box of boxes) {
+        //     //console.log("box.id: " + box.id);
+        //     if (box.id.value = checked) {
+        //         console.log(box.id.checked);
+        //     }
+        // }
 
         chosenAnswer.id = this.id;
         chosenAnswer.question = this.questionObj[this.id - 1];
         for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
+            checkedBoxes.push(document.getElementById("c" + (i + 1)).checked == true)
             if (document.getElementById("c" + (i + 1)).checked == true) {
                 chosenAnswer.answerArr.push(this.answersObj[this.id - 1][i]);
                 chosenAnswer.answerIndex.push(i);
@@ -158,10 +179,15 @@ class Questions {
             if (currentCorrect[i] === "true") {
                 chosenAnswer.correctIndex.push(i);
             }
-        }        
+        } 
+        chosenAnswer.correctAnswersStr = currentAnswer[chosenAnswer.correctIndex];
+
+        if (JSON.stringify(chosenAnswer.answerIndex) === JSON.stringify(chosenAnswer.correctIndex)) {
+            chosenAnswer.correct = true;
+        }
         
         this.chosenAnswers.splice(chosenAnswer.id - 1, 1, chosenAnswer);
-
+        console.log(checkedBoxes);
         console.log(this.chosenAnswers);
     }
 }
