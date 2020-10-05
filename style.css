@@ -41,6 +41,7 @@ p {
     display: none;
 }
 .toggleDiv {
+    width: 100%;
     float: left;
 }
 
@@ -48,16 +49,16 @@ p {
 
 .answer {
     border: 1px solid black;
-    float: left;
+    float: right;
     padding: 5px;
-    margin: 0 0 0 10px;
+    margin: 10px 0 0 0;
     background-color: white;
 }
 .toggle {
     border: 1px solid black;
     float: left;
     padding: 5px;
-    margin: 0 0 0 10px;
+    margin: 10px 20px 0 0;
     background-color: white;
 }
 .play {
