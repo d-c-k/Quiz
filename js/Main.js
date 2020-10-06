@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
     //----------Previous-button----------//
 
     document.getElementById("btnPrev").addEventListener("mousedown", function(e) {
-        //questions.selected();        
+        questions.selected();        
     })
 
     document.getElementById("btnPrev").addEventListener("mouseup", function(e) {

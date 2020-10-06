@@ -68,6 +68,8 @@ class Questions {
                 document.getElementById("d" + (i + 1)).style.display = "none";
             }
         }
+
+        this.selectedOptions()
           
         document.getElementById("btnPrev").disabled = false;
 
@@ -85,6 +87,8 @@ class Questions {
     }
     
     stepBack() {
+
+        
 
         let num = document.getElementById("list");
 
@@ -109,25 +113,7 @@ class Questions {
             }
         }
 
-        let a = this.chosenAnswers[this.id - 1];
-
-        if (a.answerIndex.length = 1) {
-            document.getElementById("c" + (Number(a.answerIndex) + 1)).checked = true;
-        }
-        if (a.answerIndex.length > 1) {
-            for (let i = 0; i <= a.answerIndex.length; i++) {
-                document.getElementById("c" + (Number(a.answerIndex[i]) + 1)).checked = true;
-            }
-        }
-        // console.log(this.chosenAnswers[this.id - 1][1].length);
-        //for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
-            // if (this.chosenAnswers[this.id - 1].chosenAnswer.answerIndex.length == 1) {
-            //     document.getElementById("c" + (this.chosenAnswers[this.id + 1].answerIndex)).checked == true;
-            // } 
-            // else if (this.chosenAnswers[this.id + 1].answerIndex.legth == 1) {
-            //     console.log("hej");
-            // }
-        //}        
+        this.selectedOptions();   
 
         document.getElementById("btnPrev").disabled = false;
         
@@ -156,22 +142,11 @@ class Questions {
         }
 
         let currentAnswer = this.answersObj[this.id - 1];
-        let currentCorrect = this.correctAnswersObj[this.id - 1];
-
-        let checkedBoxes = [];
-        //checkedBoxes.getElementById
-        // let boxes = document.getElementsByClassName("answerCheck");
-        // for (let box of boxes) {
-        //     //console.log("box.id: " + box.id);
-        //     if (box.id.value = checked) {
-        //         console.log(box.id.checked);
-        //     }
-        // }
+        let currentCorrect = this.correctAnswersObj[this.id - 1];        
 
         chosenAnswer.id = this.id;
         chosenAnswer.question = this.questionObj[this.id - 1];
         for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
-            checkedBoxes.push(document.getElementById("c" + (i + 1)).checked == true)
             if (document.getElementById("c" + (i + 1)).checked == true) {
                 chosenAnswer.answerArr.push(this.answersObj[this.id - 1][i]);
                 chosenAnswer.answerIndex.push(i);
@@ -187,7 +162,20 @@ class Questions {
         }
         
         this.chosenAnswers.splice(chosenAnswer.id - 1, 1, chosenAnswer);
-        console.log(checkedBoxes);
+        
         console.log(this.chosenAnswers);
+    }
+
+    selectedOptions() {
+        let a = this.chosenAnswers[this.id - 1];
+        let b = this.answersObj[this.id - 1];
+        let c = b.filter(x => x != null);        
+            
+        if (a.answerIndex.length >= 1) {
+            for (let i = 0; i < c.length; i++) {
+                document.getElementById("c" + (Number(a.answerIndex[i]) + 1)).checked = true;
+                console.log("checked = " + (Number(a.answerIndex[i]) + 1));
+            }
+        }
     }
 }
