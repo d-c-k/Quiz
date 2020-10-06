@@ -43,13 +43,18 @@ class Questions {
         
     }
 
-    async newQuestion() {
+    async initiateAPI() {
 
         let num = document.getElementById("list");
         let url = "https://quizapi.io/api/v1/questions?apiKey=V2SqyAql6TQH3KSslxE0L7hulaIiaFrZ3BeXbDqn&limit=" + num.value;
         
         await fetch(url);
 
+        this.loadQuestion();
+    }
+
+    loadQuestion() {
+        
         for (let i = 1; i <= this.answersObj[this.id - 1].length; i++) {
             document.getElementById("d" + i).style.display = "block";
             document.getElementById("c" + i).checked = false;
@@ -69,51 +74,20 @@ class Questions {
             }
         }
 
-        this.selectedOptions()
-          
-        document.getElementById("btnPrev").disabled = false;
-
-        if (this.id < num.value) {
-            document.getElementById("btnNext").disabled = false;
-            document.getElementById("btnAnswers").disabled = true;
-        }
-        if (this.id == num.value) {
-            document.getElementById("btnNext").disabled = true;
-            document.getElementById("btnAnswers").disabled = false;
-        }
-        if (this.id <= 1) {
-            document.getElementById("btnPrev").disabled = true;
-        }
+        this.activeButtons();
+        this.selectedOptions();
     }
-    
+
     stepBack() {
-
-        
-
-        let num = document.getElementById("list");
 
         this.id--;
 
-        for (let i = 1; i <= this.answersObj[this.id - 1].length; i++) {
-            document.getElementById("d" + i).style.display = "block";
-            document.getElementById("c" + i).checked = false;
-        }
+        this.loadQuestion();
+    }
 
-        let questionId = document.getElementById("questionCounter");
-        questionId.innerHTML = "Question " + this.id + ":";
+    activeButtons() {
 
-        let questionWrite = document.getElementById("question");
-        questionWrite.innerHTML = this.questionObj[this.id - 1].replace(/\</g,"&lt;");
-            
-        for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
-            if (this.answersObj[this.id - 1][i] != undefined) {
-                document.getElementById("l" + (i + 1)).innerHTML = this.answersObj[this.id - 1][i].replace(/\</g,"&lt;");
-            } else {
-                document.getElementById("d" + (i + 1)).style.display = "none";
-            }
-        }
-
-        this.selectedOptions();   
+        let num = document.getElementById("list");
 
         document.getElementById("btnPrev").disabled = false;
         
@@ -167,6 +141,7 @@ class Questions {
     }
 
     selectedOptions() {
+
         let a = this.chosenAnswers[this.id - 1];
         let b = this.answersObj[this.id - 1];
         let c = b.filter(x => x != null);        
@@ -177,5 +152,19 @@ class Questions {
                 console.log("checked = " + (Number(a.answerIndex[i]) + 1));
             }
         }
+    }
+
+    writeAnswers() {
+
+        this.chosenAnswers.chosenAnswer.array.forEach(element => {
+            console.log(element);
+        });
+        // let wrapper = document.getElementById("answerWraper");
+        // let writeQustionId = document.createElement("h1");
+        // let writeQustion = document.createElement("h1");
+        // let writeChosen = document.createElement("p");
+        // let writeCorrect = document.createElement("p");
+
+        // writeQustion.innerHTML = 
     }
 }

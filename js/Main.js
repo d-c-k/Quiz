@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
     
     document.getElementById("btnPlay").addEventListener("mouseup", function(e) {
         questions.setId();
-        questions.newQuestion();
+        questions.initiateAPI();
         document.getElementById("regAll").style.display = "none"; 
         document.getElementById("questionsAll").style.display = "block";
     })
@@ -35,11 +35,18 @@ window.addEventListener("DOMContentLoaded", function(e) {
 
     document.getElementById("btnNext").addEventListener("mouseup", function(e) {
         questions.setId();
-        questions.newQuestion();
+        questions.loadQuestion();
     })
 
     //----------Lock answers-button----------//
 
-    document.getElementById("btnAnswers").addEventListener("click", function(e) {
-    })
+    // document.getElementById("btnAnswers").addEventListener("mousedown", function(e) {
+    //     questions.selected();  
+    //     document.getElementById("questionsAll").style.display = "none";
+    //     document.getElementById("answersAll").style.display = "block";
+    // })
+
+    // document.getElementById("btnAnswers").addEventListener("mouseup", function(e) {
+    //     questions.writeAnswers();
+    // })
 })
