@@ -126,10 +126,10 @@ class Questions {
                 chosenAnswer.answerIndex.push(i);
             }
             if (currentCorrect[i] === "true") {
+                chosenAnswer.correctAnswersStr.push(currentAnswer[i])
                 chosenAnswer.correctIndex.push(i);
             }
         } 
-        chosenAnswer.correctAnswersStr = currentAnswer[chosenAnswer.correctIndex];
 
         if (JSON.stringify(chosenAnswer.answerIndex) === JSON.stringify(chosenAnswer.correctIndex)) {
             chosenAnswer.correct = true;
@@ -146,7 +146,7 @@ class Questions {
         let b = this.answersObj[this.id - 1];
         let c = b.filter(x => x != null);        
             
-        if (a.answerIndex.length >= 1) {
+        if (a != undefined && a.answerIndex.length >= 1) {
             for (let i = 0; i < c.length; i++) {
                 document.getElementById("c" + (Number(a.answerIndex[i]) + 1)).checked = true;
                 console.log("checked = " + (Number(a.answerIndex[i]) + 1));
@@ -156,15 +156,32 @@ class Questions {
 
     writeAnswers() {
 
-        this.chosenAnswers.chosenAnswer.array.forEach(element => {
-            console.log(element);
-        });
-        // let wrapper = document.getElementById("answerWraper");
-        // let writeQustionId = document.createElement("h1");
-        // let writeQustion = document.createElement("h1");
-        // let writeChosen = document.createElement("p");
-        // let writeCorrect = document.createElement("p");
+        console.log("test");
 
-        // writeQustion.innerHTML = 
+        let result = document.getElementById("resultList");
+
+        for (let chosenAnswer of this.chosenAnswers) {
+
+            console.log(chosenAnswer);
+ 
+            let writeQuestionId = document.createElement("h1");
+            let writeQuestion = document.createElement("h1");
+            let writeChosen = document.createElement("p");
+            let writeCorrect = document.createElement("p");
+
+            writeQuestionId.innerHTML = "Question " + chosenAnswer.id + ":";
+            writeQuestion.innerHTML = chosenAnswer.question.replace(/\</g,"&lt;");
+            if (chosenAnswer.correct == true) {
+                writeChosen.innerHTML = "You answered " + chosenAnswer.answerArr + " which is CORRECT!";
+            } else {
+                writeChosen.innerHTML = "You answered " + chosenAnswer.answerArr + " which is WRONG!";
+                writeCorrect.innerHTML = "The correct answer is " + chosenAnswer.correctAnswersStr;
+            } 
+
+            result.appendChild(writeQuestionId);
+            result.appendChild(writeQuestion);
+            result.appendChild(writeChosen);
+            result.appendChild(writeCorrect);
+        }
     }
 }

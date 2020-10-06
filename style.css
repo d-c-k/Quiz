@@ -40,9 +40,9 @@ p {
 #questionsAll {
     display: none;
 }
-#answersAll {
+/* #answersAll {
     display: none;
-}
+} */
 .toggleDiv {
     width: 100%;
     float: left;

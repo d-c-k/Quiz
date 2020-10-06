@@ -1,6 +1,6 @@
-window.addEventListener("DOMContentLoaded", function(e) {
+document.addEventListener("DOMContentLoaded", function(e) {
     let player = new Player();
-    let questions = new Questions();    
+    let questions = new Questions();   
 
     //----------Start-button----------//
 
@@ -40,13 +40,13 @@ window.addEventListener("DOMContentLoaded", function(e) {
 
     //----------Lock answers-button----------//
 
-    // document.getElementById("btnAnswers").addEventListener("mousedown", function(e) {
-    //     questions.selected();  
-    //     document.getElementById("questionsAll").style.display = "none";
-    //     document.getElementById("answersAll").style.display = "block";
-    // })
+    document.getElementById("btnAnswers").addEventListener("mousedown", function(e) {
+        questions.selected();  
+    })
 
-    // document.getElementById("btnAnswers").addEventListener("mouseup", function(e) {
-    //     questions.writeAnswers();
-    // })
+    document.getElementById("btnAnswers").addEventListener("mouseup", function(e) {
+        document.getElementById("questionsAll").style.display = "none";
+        document.getElementById("answersAll").style.display = "block";
+        questions.writeAnswers();
+    })
 })
