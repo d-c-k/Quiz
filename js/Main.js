@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         questions.setId();
         questions.initiateAPI();
         document.getElementById("regAll").style.display = "none"; 
+        document.getElementById("scoreCard").style.display = "block";
         document.getElementById("questionsAll").style.display = "block";
     })
 
@@ -41,7 +42,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
     //----------Lock answers-button----------//
 
     document.getElementById("btnAnswers").addEventListener("mousedown", function(e) {
-        questions.selected();  
+        questions.selected(); 
+        questions.scoreCalc(); 
+        
     })
 
     document.getElementById("btnAnswers").addEventListener("mouseup", function(e) {

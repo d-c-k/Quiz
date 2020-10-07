@@ -1,10 +1,11 @@
 class Questions {
-    constructor(id = 0) {
+    constructor(id = 0, score = 0) {
         this.id = id;
         this.questionObj = [];
         this.answersObj = [];
         this.correctAnswersObj = [];
         this.chosenAnswers = [];
+        this.score = score;
     }
 
     setId() {
@@ -119,14 +120,14 @@ class Questions {
         let currentCorrect = this.correctAnswersObj[this.id - 1];        
 
         chosenAnswer.id = this.id;
-        chosenAnswer.question = this.questionObj[this.id - 1];
+        chosenAnswer.question = this.questionObj[this.id - 1].replace(/\</g,"&lt;");
         for (let i = 0; i < this.answersObj[this.id - 1].length; i++) {
             if (document.getElementById("c" + (i + 1)).checked == true) {
-                chosenAnswer.answerArr.push(this.answersObj[this.id - 1][i]);
+                chosenAnswer.answerArr.push(this.answersObj[this.id - 1][i].replace(/\</g,"&lt;"));
                 chosenAnswer.answerIndex.push(i);
             }
             if (currentCorrect[i] === "true") {
-                chosenAnswer.correctAnswersStr.push(currentAnswer[i])
+                chosenAnswer.correctAnswersStr.push(currentAnswer[i].replace(/\</g,"&lt;"))
                 chosenAnswer.correctIndex.push(i);
             }
         } 
@@ -138,6 +139,19 @@ class Questions {
         this.chosenAnswers.splice(chosenAnswer.id - 1, 1, chosenAnswer);
         
         console.log(this.chosenAnswers);
+    }
+
+    scoreCalc() {
+        let num = document.getElementById("list");
+
+        for (let chosenAnswer of this.chosenAnswers) {
+            if (chosenAnswer.correct == true) {
+                this.score++;                
+            }
+            console.log(this.score);
+        }
+
+        document.getElementById("scoreLine").innerHTML = "You got " + this.score + " out of " + num.value + " questions right";
     }
 
     selectedOptions() {
@@ -156,13 +170,11 @@ class Questions {
 
     writeAnswers() {
 
-        console.log("test");
-
         let result = document.getElementById("resultList");
 
         for (let chosenAnswer of this.chosenAnswers) {
 
-            console.log(chosenAnswer);
+            let container = document.createElement("div");
  
             let writeQuestionId = document.createElement("h1");
             let writeQuestion = document.createElement("h1");
@@ -170,7 +182,7 @@ class Questions {
             let writeCorrect = document.createElement("p");
 
             writeQuestionId.innerHTML = "Question " + chosenAnswer.id + ":";
-            writeQuestion.innerHTML = chosenAnswer.question.replace(/\</g,"&lt;");
+            writeQuestion.innerHTML = chosenAnswer.question;
             if (chosenAnswer.correct == true) {
                 writeChosen.innerHTML = "You answered " + chosenAnswer.answerArr + " which is CORRECT!";
             } else {
@@ -178,10 +190,20 @@ class Questions {
                 writeCorrect.innerHTML = "The correct answer is " + chosenAnswer.correctAnswersStr;
             } 
 
-            result.appendChild(writeQuestionId);
-            result.appendChild(writeQuestion);
-            result.appendChild(writeChosen);
-            result.appendChild(writeCorrect);
+            container.appendChild(writeQuestionId);
+            container.appendChild(writeQuestion);
+            container.appendChild(writeChosen);
+            container.appendChild(writeCorrect);
+
+            container.classList.add("container");
+
+            result.appendChild(container);
         }
+
+        let btnReset = document.createElement("button");
+        btnReset.innerHTML = "Reset";
+        btnReset.classList.add("reset");
+
+        result.appendChild(btnReset);
     }
 }

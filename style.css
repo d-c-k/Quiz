@@ -37,15 +37,28 @@ p {
 #regAll {
     display: block;
 }
+#scoreCard {
+    display: none;
+    margin: 10px;
+}
 #questionsAll {
     display: none;
 }
-/* #answersAll {
+#answersAll {
     display: none;
-} */
+}
 .toggleDiv {
     width: 100%;
     float: left;
+}
+.container {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0;
+}
+ul{
+    padding: 0;
+    margin: 0;
 }
 
 /*---------- Buttons ----------*/
@@ -71,6 +84,13 @@ p {
     margin: 0 0 0 10px;
     background-color: white;
     width: 100%;
+}
+.reset {
+    border: 1px solid black;
+    float: right;
+    padding: 5px;
+    margin: 10px 0;
+    background-color: white;
 }
 button.pressed {
     border: 1px solid black;
