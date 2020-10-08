@@ -42,14 +42,19 @@ document.addEventListener("DOMContentLoaded", function(e) {
     //----------Lock answers-button----------//
 
     document.getElementById("btnAnswers").addEventListener("mousedown", function(e) {
-        questions.selected(); 
-        questions.scoreCalc(); 
-        
+        questions.selected();
     })
 
     document.getElementById("btnAnswers").addEventListener("mouseup", function(e) {
         document.getElementById("questionsAll").style.display = "none";
         document.getElementById("answersAll").style.display = "block";
+        questions.scoreCalc(); 
         questions.writeAnswers();
+    })
+
+    //----------Reset-button----------//
+
+    document.getElementById("resetBtn").addEventListener("click", function(e) {
+        questions.resetGame();
     })
 })

@@ -148,7 +148,6 @@ class Questions {
             if (chosenAnswer.correct == true) {
                 this.score++;                
             }
-            console.log(this.score);
         }
 
         document.getElementById("scoreLine").innerHTML = "You got " + this.score + " out of " + num.value + " questions right";
@@ -171,8 +170,11 @@ class Questions {
     writeAnswers() {
 
         let result = document.getElementById("resultList");
+        let elementId = 0;
 
         for (let chosenAnswer of this.chosenAnswers) {
+
+            elementId++;
 
             let container = document.createElement("div");
  
@@ -196,14 +198,36 @@ class Questions {
             container.appendChild(writeCorrect);
 
             container.classList.add("container");
+            container.setAttribute("id", elementId);
 
-            result.appendChild(container);
+            result.appendChild(container);            
+        }
+    }
+
+    resetGame() {
+
+        document.getElementById("scoreCard").style.display = "none";
+        document.getElementById("scoreCard").style.display = "none";
+        document.getElementById("questionsAll").style.display = "none";
+        document.getElementById("answersAll").style.display = "none";
+        document.getElementById("regAll").style.display = "block";   
+        document.getElementById("scoreLine").innerHTML = "";    
+        
+        for (let i = 1; i <= this.id; i++) {
+            let element = document.getElementById(i);
+            if (document.getElementById(i) != undefined) {
+                element.remove();
+            }                
         }
 
-        let btnReset = document.createElement("button");
-        btnReset.innerHTML = "Reset";
-        btnReset.classList.add("reset");
+        this.id = 0;
+        this.questionObj.length = 0;
+        this.answersObj.length = 0;
+        this.correctAnswersObj.length = 0;
+        this.chosenAnswers.length = 0;
+        this.score = 0;
 
-        result.appendChild(btnReset);
+        let player = new Player();
+        player.name = "";
     }
 }
