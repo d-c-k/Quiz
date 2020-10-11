@@ -39,9 +39,7 @@ class Questions {
             console.log(this.questionObj);
             console.log(this.answersObj);
             console.log(this.correctAnswersObj);
-        });
-        
-        
+        });        
     }
 
     async initiateAPI() {

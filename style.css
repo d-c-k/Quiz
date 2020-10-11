@@ -32,7 +32,7 @@ p {
     margin: 0 0 20px 0;
 }
 .regPlayer {
-    width: 170px;
+    width: 175px;
     float: right;
 }
 .half {
@@ -148,6 +148,6 @@ input[type="checkbox"]:checked {
     font-family: 'Courier New', Courier, monospace;
     border: 1px solid black;
     padding: 5px 0 5px 2px;
-    width: 166px;
+    width: 170px;
     float: right;
 }
